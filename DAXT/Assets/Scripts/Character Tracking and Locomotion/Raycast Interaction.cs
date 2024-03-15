@@ -35,7 +35,7 @@ public class RaycastInteraction : MonoBehaviour
         AudioSource audioSource = obj.GetComponent<AudioSource>();
         if (audioSource != null) 
         {
-            audioSource.clip.Play();
+            //audioSource.clip.Play();
             Debug.Log("Playing audio on: " + obj.name); 
         }
         else 
