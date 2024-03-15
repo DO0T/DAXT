@@ -656,6 +656,8 @@ GameObject:
   - component: {fileID: 348312752257329980}
   - component: {fileID: 6644873892215877764}
   - component: {fileID: 9013303622959852534}
+  - component: {fileID: 8541439453137538405}
+  - component: {fileID: 2818003358780786937}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -846,6 +848,34 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &8541439453137538405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911228865715911350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfe95efa8b7ccd4db1737ea44c6c0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 9.91
+  uiText: {fileID: 0}
+--- !u!114 &2818003358780786937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911228865715911350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d914c93c4a54cd040b92c543d79feabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 10
+  uiText: {fileID: 0}
 --- !u!1 &4088481358576965781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 4486695043145637192}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 3
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1

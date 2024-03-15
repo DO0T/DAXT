@@ -21,7 +21,7 @@ public class RaycastTempScript : MonoBehaviour
         if(Physics.Raycast(ray, out hitInfo, raycastDistance)) 
         {
             //Check if the object has the Interactable tag
-            if (hitInfo.collider.CompareTag("Interactable")) 
+            if (hitInfo.collider.CompareTag("tempInteractable")) 
             {
                 GameObject hitObject = hitInfo.collider.gameObject;
                 PlayAudio(hitObject);

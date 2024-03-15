@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - pickUp
+  - tempInteractable
   layers:
   - Default
   - TransparentFX
