@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class RaycastInteraction : MonoBehaviour
+public class RaycastTempScript : MonoBehaviour
 {
     public float raycastDistance = 10.0f;
     public TextMeshProUGUI uiText;
@@ -36,7 +36,6 @@ public class RaycastInteraction : MonoBehaviour
         if (audioSource != null) 
         {
             audioSource.Play();
-
             Debug.Log("Playing audio on: " + obj.name); 
         }
         else 
@@ -48,6 +47,5 @@ public class RaycastInteraction : MonoBehaviour
     void DisplayText(GameObject obj) 
     {
         uiText.text = obj.name;
-
     }
 }
