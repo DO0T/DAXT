@@ -40,7 +40,12 @@ public class NPCDialogue : MonoBehaviour
         if (player_detection) {
             if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed) && primaryButtonPressed)
             {
-                dialogueTextScript.UpdateDialogue();
+                if (dialogueTextScript.getIndex() == 1) {
+                    Debug.Log("End");
+                }
+                else {
+                    dialogueTextScript.UpdateDialogue();
+                }
             }
         }
     }
