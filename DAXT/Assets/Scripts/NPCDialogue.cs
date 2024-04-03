@@ -9,6 +9,9 @@ public class NPCDialogue : MonoBehaviour
     bool player_detection = false;
     private UnityEngine.XR.InputDevice rightHandController;
 
+    // Reference to the dialogueText script
+    public dialogueText dialogueTextScript;
+
     void Start() {
         InitializeRightController();
     }
@@ -35,7 +38,7 @@ public class NPCDialogue : MonoBehaviour
         if (player_detection) {
             if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed) && primaryButtonPressed)
             {
-                Debug.Log("Primary button pressed on Right Hand controller");
+                dialogueTextScript.UpdateDialogue();
             }
         }
     }
