@@ -13,6 +13,9 @@ public class NPCDialogue : MonoBehaviour
     public dialogueText dialogueTextScript;
     public GameObject dialogueBox;
 
+    // This is needed for computers pushing 120+ fps
+    private bool wasPrimaryButtonPressedLastFrame = false;
+
     void Start() {
         dialogueBox.SetActive(false);
         InitializeRightController();
@@ -34,18 +37,26 @@ public class NPCDialogue : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (player_detection) {
-            if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed) && primaryButtonPressed)
+            if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
             {
-                if (dialogueTextScript.getIndex() == 1) {
-                    Debug.Log("End");
+                // Check if the button was not pressed last frame and is pressed now
+                if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                {
+                    Debug.Log("Button Pressed");
+                    if (dialogueTextScript.getIndex() == 1) {
+                        dialogueTextScript.UpdateDialogue();
+                        Debug.Log("End");
+                    }
+                    else {
+                        dialogueTextScript.UpdateDialogue();
+                        dialogueTextScript.NextText();
+                    }
                 }
-                else {
-                    dialogueTextScript.UpdateDialogue();
-                }
+                // Update the last frame state for the next frame
+                wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
             }
         }
     }
