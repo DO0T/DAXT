@@ -11,8 +11,10 @@ public class NPCDialogue : MonoBehaviour
 
     // Reference to the dialogueText script
     public dialogueText dialogueTextScript;
+    public GameObject dialogueBox;
 
     void Start() {
+        dialogueBox.SetActive(false);
         InitializeRightController();
     }
     
@@ -47,10 +49,12 @@ public class NPCDialogue : MonoBehaviour
         if(other.name == "Player") {
             player_detection = true;
             InitializeRightController();
+            dialogueBox.SetActive(true);
         }
     }
 
     private void OnTriggerExit(Collider other) {
         player_detection = false;
+        dialogueBox.SetActive(false);
     }
 }
