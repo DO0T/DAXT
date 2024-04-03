@@ -7398,31 +7398,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.866749
+      value: -18.837
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.895953
+      value: 13.836
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.118309
+      value: -16.973
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7430,7 +7430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c5ac37923df7489b9e83968a085bbbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -17610,6 +17610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTextScript: {fileID: 586185492}
   dialogueBox: {fileID: 1773287117}
+  mailItem: {fileID: 667844920}
 --- !u!1001 &1634617693
 PrefabInstance:
   m_ObjectHideFlags: 0

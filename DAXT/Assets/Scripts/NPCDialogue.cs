@@ -12,12 +12,14 @@ public class NPCDialogue : MonoBehaviour
     // Reference to the dialogueText script
     public dialogueText dialogueTextScript;
     public GameObject dialogueBox;
+    public GameObject mailItem;
 
     // This is needed for computers pushing 120+ fps
     private bool wasPrimaryButtonPressedLastFrame = false;
 
     void Start() {
         dialogueBox.SetActive(false);
+        mailItem.SetActive(false);
         InitializeRightController();
     }
     
@@ -48,7 +50,7 @@ public class NPCDialogue : MonoBehaviour
                     Debug.Log("Button Pressed");
                     if (dialogueTextScript.getIndex() == 1) {
                         dialogueTextScript.UpdateDialogue();
-                        Debug.Log("End");
+                        mailItem.SetActive(true);
                     }
                     else {
                         dialogueTextScript.UpdateDialogue();
