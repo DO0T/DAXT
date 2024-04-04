@@ -59,7 +59,11 @@ public class NPCDialogue : MonoBehaviour
                     // Check if on final dialogue
                     if (dialogueTextScript.getIndex() == 1) {
                         dialogueTextScript.UpdateDialogue();
-                        mailItem.SetActive(true);
+                        
+                        // make sure mail exists
+                        if (mailItem != null) {
+                            mailItem.SetActive(true);
+                        }
 
                         // Add mail to task list
                         if (!mailAdded) {
