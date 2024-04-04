@@ -7,7 +7,8 @@ public class dialogueText : MonoBehaviour
 {
     public TextMeshProUGUI dialogueTextObj;
     private int currentIndex = 0;
-    private string[] texts = { "Hola Amigo!", "¿Pon eso en el bote de basura por favor?" };
+    private string[] texts = { "¡Hola Amigo!", "¿Pon eso en el bote de basura por favor?" };
+    private string completedText = "¡Gracias!"
 
     public void UpdateDialogue()
     {
