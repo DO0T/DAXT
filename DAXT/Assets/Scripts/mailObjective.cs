@@ -13,7 +13,7 @@ public class mailObjective : MonoBehaviour
     private GameObject mailItemTemplate;
     public GameObject tryAgain;
 
-    private bool isCoroutineRunning = false;
+    public objectiveTracker objTrack;
 
     private Transform initialParent;
     private Vector3 initialPosition;
@@ -67,9 +67,7 @@ public class mailObjective : MonoBehaviour
 
     public void completeTask()
     {
-        // Log "done" to the console
-        Debug.Log("done");
-
+        objTrack.StrikeThroughMailObjective();
         Destroy(mailItem);
     }
 }
