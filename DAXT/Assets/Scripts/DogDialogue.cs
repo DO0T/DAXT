@@ -64,7 +64,10 @@ public class DogDialogue : MonoBehaviour
                         }
                         else if (dialogueTextScript.getIndex() == 2) {
                             dialogueTextScript.UpdateDialogue();
-                            Debug.Log("Finale");
+                            
+                            if (dog != null) {
+                            dog.SetActive(true);
+                        }
                         }
                         else {
                             dialogueTextScript.UpdateDialogue();
