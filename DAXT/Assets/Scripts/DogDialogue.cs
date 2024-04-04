@@ -17,6 +17,7 @@ public class DogDialogue : MonoBehaviour
 
     // Game Objects
     public GameObject dialogueBox;
+    public GameObject dog;
 
     // State bools
     bool player_detection = false;
@@ -28,6 +29,7 @@ public class DogDialogue : MonoBehaviour
 
     void Start() {
         dialogueBox.SetActive(false);
+        dog.SetActive(false);
     }
 
     void InitializeRightController() {
