@@ -60,4 +60,23 @@ public class objectiveTracker : MonoBehaviour
         }
     }
 
+     public void StrikeThroughDogObjective()
+    {
+        if (dogAdded == 1) {
+            // Remove the last added objective text
+            objectiveList.text = objectiveList.text.Replace("\n" + dogObjective, "");
+            
+            // Add it back with strikethrough tags
+            objectiveList.text += "\n<s>" + dogObjective + "</s>";
+        }
+
+        if (dogAdded == 2) {
+            // Remove the last added objective text
+            objectiveList.text = objectiveList.text.Replace("\n" + dogObjective, "");
+            
+            // Add it back with strikethrough tags
+            objectiveList.text += "\n<s>" + dogObjective + "</s>";
+        }
+    }
+
 }

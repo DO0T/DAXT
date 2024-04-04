@@ -16127,6 +16127,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1429598814}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1429598815}
   m_SourcePrefab: {fileID: 100100000, guid: 1299dfd772c05bf4eb2437d163771001, type: 3}
 --- !u!1 &1429598810 stripped
 GameObject:
@@ -16282,6 +16285,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1429598815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429598810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f20c9172f9214d9ab2e413ad62cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dog: {fileID: 1429598810}
+  guy: {fileID: 531808704}
+  objTrack: {fileID: 1962815430}
+  done: {fileID: 1519283362}
 --- !u!1001 &1433104555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21974,7 +21993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectiveList: {fileID: 1181693860}
   mailObjective: Letter Objective
+  dogObjective: Dog Objective
   mailAdded: 0
+  dogAdded: 0
 --- !u!1001 &1963110739
 PrefabInstance:
   m_ObjectHideFlags: 0

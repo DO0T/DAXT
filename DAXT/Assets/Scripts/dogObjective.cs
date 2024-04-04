@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class dogObjective : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Objs
+    public GameObject dog;
+    public GameObject guy;
+
+    public objectiveTracker objTrack;
+    public dogDialogueText done;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        // Determine which object the mailItem collided with
+        if (other.gameObject == guy)
+        {
+            // Run failTask if it collides with mailBox
+            completeTask();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void completeTask()
     {
-        
+        objTrack.StrikeThroughDogObjective();
+        done.DoneDialogue();
+        Destroy(dog);
     }
 }
