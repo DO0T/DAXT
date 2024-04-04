@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LocomotionProvider: {fileID: 7596768510166208132}
-  m_MinHeight: 0
+  m_MinHeight: 3
   m_MaxHeight: Infinity
 --- !u!114 &7179631246431520971
 MonoBehaviour:
