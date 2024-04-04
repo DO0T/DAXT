@@ -71,5 +71,6 @@ public class mailObjective : MonoBehaviour
         objTrack.StrikeThroughMailObjective();
         done.DoneDialogue();
         Destroy(mailItem);
+        Destroy(tryAgain);
     }
 }
