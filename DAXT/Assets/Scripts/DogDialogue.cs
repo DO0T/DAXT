@@ -22,6 +22,7 @@ public class DogDialogue : MonoBehaviour
     // State bools
     bool player_detection = false;
     bool player_mood = false;
+    bool dog_added = false;
 
     // This is needed for computers pushing 120+ fps
     private bool wasSecondaryButtonPressedLastFrame = false;
@@ -67,6 +68,11 @@ public class DogDialogue : MonoBehaviour
                             
                             if (dog != null) {
                             dog.SetActive(true);
+
+                            if (!dog_added) {
+                                objTrack.AddDogToTracker();
+                                dog_added = true;
+                            }
                         }
                         }
                         else {
