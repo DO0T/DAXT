@@ -20,6 +20,7 @@ public class DogDialogue : MonoBehaviour
 
     // State bools
     bool player_detection = false;
+    bool player_mood = false;
 
     // This is needed for computers pushing 120+ fps
     private bool wasSecondaryButtonPressedLastFrame = false;
@@ -48,23 +49,55 @@ public class DogDialogue : MonoBehaviour
     void Update()
     {
         if (player_detection) {
-            if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
-            {
-                // Check if the button was not pressed last frame and is pressed now
-                if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+            if (!player_mood) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
                 {
-                    Debug.Log("Second");
-                    // Check if on final dialogue
-                    if (dialogueTextScript.getIndex() == 1) {
-                        dialogueTextScript.UpdateDialogue();
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        // Check if on final dialogue
+                        if (dialogueTextScript.getIndex() == 1) {
+                            dialogueTextScript.UpdateDialogue();
+                            player_mood = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 2) {
+                            dialogueTextScript.UpdateDialogue();
+                            Debug.Log("Finale");
+                        }
+                        else {
+                            dialogueTextScript.UpdateDialogue();
+                            dialogueTextScript.NextText();
+                        }
                     }
-                    else {
-                        dialogueTextScript.UpdateDialogue();
-                        dialogueTextScript.NextText();
-                    }
+                    // Update the last frame state for the next frame
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
                 }
-                // Update the last frame state for the next frame
-                wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+            }
+            else if (player_mood) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.GoodDialogue();
+                        dialogueTextScript.NextText();
+                        player_mood = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.BadDialogue();
+                        dialogueTextScript.NextText();
+                        player_mood = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
             }
         }
     }
