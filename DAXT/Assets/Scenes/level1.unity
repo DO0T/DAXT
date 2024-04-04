@@ -12999,7 +12999,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Current Objectives:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17748,6 +17748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTextScript: {fileID: 586185492}
+  objTrack: {fileID: 1962815430}
   dialogueBox: {fileID: 1773287117}
   mailItem: {fileID: 667844920}
 --- !u!1001 &1634617693
@@ -21019,6 +21020,7 @@ GameObject:
   - component: {fileID: 1962815429}
   - component: {fileID: 1962815428}
   - component: {fileID: 1962815427}
+  - component: {fileID: 1962815430}
   m_Layer: 0
   m_Name: Objectives
   m_TagString: Untagged
@@ -21110,6 +21112,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1962815430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962815425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec915a2d429d404d9a7d55a07431664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveList: {fileID: 1181693860}
+  mailObjective: Letter Objective
 --- !u!1001 &1963110739
 PrefabInstance:
   m_ObjectHideFlags: 0

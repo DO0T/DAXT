@@ -6,13 +6,22 @@ using UnityEngine.XR;
 
 public class NPCDialogue : MonoBehaviour
 {
-    bool player_detection = false;
+    // VR Controller
     private UnityEngine.XR.InputDevice rightHandController;
 
     // Reference to the dialogueText script
     public dialogueText dialogueTextScript;
+
+    // Reference to objectiveTracker script
+    public objectiveTracker objTrack;
+
+    // Game Objects
     public GameObject dialogueBox;
     public GameObject mailItem;
+
+    // State bools
+    bool player_detection = false;
+    bool mailAdded = false;
 
     // This is needed for computers pushing 120+ fps
     private bool wasPrimaryButtonPressedLastFrame = false;
@@ -47,10 +56,16 @@ public class NPCDialogue : MonoBehaviour
                 // Check if the button was not pressed last frame and is pressed now
                 if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
                 {
-                    Debug.Log("Button Pressed");
+                    // Check if on final dialogue
                     if (dialogueTextScript.getIndex() == 1) {
                         dialogueTextScript.UpdateDialogue();
                         mailItem.SetActive(true);
+
+                        // Add mail to task list
+                        if (!mailAdded) {
+                            objTrack.AddMailToTracker();
+                            mailAdded = true;
+                        }
                     }
                     else {
                         dialogueTextScript.UpdateDialogue();
