@@ -23,6 +23,7 @@ public class DogDialogue : MonoBehaviour
 
     // This is needed for computers pushing 120+ fps
     private bool wasSecondaryButtonPressedLastFrame = false;
+    private bool wasPrimaryButtonPressedLastFrame = false;
 
     void Start() {
         dialogueBox.SetActive(false);
@@ -47,10 +48,10 @@ public class DogDialogue : MonoBehaviour
     void Update()
     {
         if (player_detection) {
-            if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed))
+            if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
             {
                 // Check if the button was not pressed last frame and is pressed now
-                if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
                 {
                     Debug.Log("Second");
                     // Check if on final dialogue
@@ -63,7 +64,7 @@ public class DogDialogue : MonoBehaviour
                     }
                 }
                 // Update the last frame state for the next frame
-                wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
             }
         }
     }
