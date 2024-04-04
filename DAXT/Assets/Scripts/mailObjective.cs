@@ -14,6 +14,7 @@ public class mailObjective : MonoBehaviour
     public GameObject tryAgain;
 
     public objectiveTracker objTrack;
+    public dialogueText done;
 
     private Transform initialParent;
     private Vector3 initialPosition;
@@ -68,6 +69,7 @@ public class mailObjective : MonoBehaviour
     public void completeTask()
     {
         objTrack.StrikeThroughMailObjective();
+        done.DoneDialogue();
         Destroy(mailItem);
     }
 }

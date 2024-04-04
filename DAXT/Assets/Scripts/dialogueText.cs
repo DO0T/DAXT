@@ -15,6 +15,10 @@ public class dialogueText : MonoBehaviour
         dialogueTextObj.text = texts[currentIndex];
     }
 
+    public void DoneDialogue() {
+        dialogueTextObj.text = completedText;
+    }
+
     // Method to be called by the button to increment currentIndex
     public void NextText()
     {
