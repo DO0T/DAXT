@@ -9,6 +9,7 @@ public class RaycastInteraction : MonoBehaviour
     public float raycastDistance = 10.0f;
     public TextMeshProUGUI uiText;
     public GameObject playerPrefab;
+    public GameObject hitObject;
 
     // Update is called once per frame
     void Update()

@@ -1075,6 +1075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastDistance: 9.91
   uiText: {fileID: 0}
+  playerPrefab: {fileID: 0}
 --- !u!114 &2818003358780786937
 MonoBehaviour:
   m_ObjectHideFlags: 0
