@@ -21972,7 +21972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTextScript: {fileID: 1519283362}
-  objTrack: {fileID: 0}
+  objTrack: {fileID: 1422120514}
   dialogueBox: {fileID: 876902485}
   dog: {fileID: 1429598810}
 --- !u!135 &531808707
@@ -27842,6 +27842,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4514217353711810, guid: 09c381fe7eb215142a85dbabe00ae5b6, type: 3}
   m_PrefabInstance: {fileID: 1641647161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &660878747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4564417536228075077, guid: 8125f6b6ecaa6864b97957092983ed71, type: 3}
+  m_PrefabInstance: {fileID: 1594834862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &662338268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28410,9 +28415,9 @@ MonoBehaviour:
   trash1: {fileID: 1786676423}
   trash2: {fileID: 2061335249}
   mailBox: {fileID: 1496014047}
-  player: {fileID: 0}
+  player: {fileID: 660878747}
   tryAgain: {fileID: 642668353}
-  objTrack: {fileID: 0}
+  objTrack: {fileID: 1422120514}
   done: {fileID: 586185492}
 --- !u!1001 &668023153
 PrefabInstance:
@@ -58590,7 +58595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dog: {fileID: 1429598810}
   guy: {fileID: 531808704}
-  objTrack: {fileID: 0}
+  objTrack: {fileID: 1422120514}
   done: {fileID: 1519283362}
 --- !u!1001 &1429844231
 PrefabInstance:
@@ -67346,7 +67351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTextScript: {fileID: 586185492}
-  objTrack: {fileID: 0}
+  objTrack: {fileID: 1422120514}
   dialogueBox: {fileID: 1773287117}
   mailItem: {fileID: 667844920}
 --- !u!4 &1629508352 stripped
