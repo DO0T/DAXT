@@ -19,8 +19,16 @@ public class triggerNewEntry : MonoBehaviour
         trigger = false;
         if (triggered.hitObject == thisObject) {
             trigger = true;
-            Debug.Log("Triggered");
+            Debug.Log("Triggered by object");
             Debug.Log(thisObject);
         }
+        /*
+        else if ()
+        {
+            trigger = true;
+            Debug.Log("Triggered by dialog");
+            Debug.Log(thisObject);
+        }
+        */
     }
 }
