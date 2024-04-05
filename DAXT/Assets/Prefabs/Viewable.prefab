@@ -356,3 +356,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newText: 
+  playerPrefab: {fileID: 4564417536228075077, guid: 8125f6b6ecaa6864b97957092983ed71, type: 3}
