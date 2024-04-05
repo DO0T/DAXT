@@ -8,10 +8,13 @@ public class RaycastInteraction : MonoBehaviour
 {
     public float raycastDistance = 10.0f;
     public TextMeshProUGUI uiText;
+    public GameObject playerPrefab;
 
     // Update is called once per frame
     void Update()
     {
+        if (playerPrefab == null || !playerPrefab.activeInHierarchy) return;
+        
         // Create a ray from the camera's position and direction
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
