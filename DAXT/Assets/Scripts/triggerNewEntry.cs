@@ -7,13 +7,12 @@ public class triggerNewEntry : MonoBehaviour
     public RaycastInteraction triggered;
     public GameObject thisObject;
     public bool trigger;
-    // Start is called before the first frame update
+
     void Start()
     {
         trigger = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         trigger = false;

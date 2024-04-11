@@ -7,51 +7,66 @@ using TMPro;
 public class RaycastInteraction : MonoBehaviour
 {
     public float raycastDistance = 10.0f;
-    public TextMeshProUGUI uiText;
     public GameObject playerPrefab;
-    public GameObject hitObject;
+    private GameObject _lastHitObject; // Store the last hit object
+    private TextMeshProUGUI uiText;
 
-    // Update is called once per frame
+    public GameObject LastHitObject // Public property to access the last hit object
+    {
+        get { return _lastHitObject; }
+    }
+
+    void Start()
+    {
+        uiText = GetComponentInChildren<TextMeshProUGUI>();
+        if (uiText == null)
+        {
+            Debug.LogError("No TextMeshProUGUI component found on the child of " + gameObject.name);
+        }
+    }
+
     void Update()
     {
         if (playerPrefab == null || !playerPrefab.activeInHierarchy) return;
-        
-        // Create a ray from the camera's position and direction
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-        //Store information about what the raycast hits
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hitInfo;
 
-        if(Physics.Raycast(ray, out hitInfo, raycastDistance)) 
+        if (Physics.Raycast(ray, out hitInfo, raycastDistance))
         {
-            //Check if the object has the Interactable tag
-            if (hitInfo.collider.CompareTag("Interactable")) 
+            if (hitInfo.collider.CompareTag("Interactable"))
             {
-                GameObject hitObject = hitInfo.collider.gameObject;
-                PlayAudio(hitObject);
-                DisplayText(hitObject);
+                _lastHitObject = hitInfo.collider.gameObject; // Update the last hit object
+                PlayAudio(_lastHitObject);
+                if (_lastHitObject == gameObject)
+                {
+                    DisplayText(_lastHitObject);
+                }
             }
         }
     }
 
-    void PlayAudio(GameObject obj) 
+    void PlayAudio(GameObject obj)
     {
         AudioSource audioSource = obj.GetComponent<AudioSource>();
-        if (audioSource != null) 
+        if (audioSource != null)
         {
             audioSource.Play();
-
-            Debug.Log("Playing audio on: " + obj.name); 
+            Debug.Log("Playing audio on: " + obj.name);
         }
-        else 
+        else
         {
             Debug.LogWarning("Object does not have an Audiosource Component attached!");
         }
     }
 
-    void DisplayText(GameObject obj) 
+    void DisplayText(GameObject obj)
     {
-        uiText.text = obj.name;
-
+        if (uiText != null)
+        {
+            uiText.text = obj.name;
+        }
     }
 }
+
+
