@@ -7,7 +7,8 @@ public class dogDialogueText : MonoBehaviour
 {
     public TextMeshProUGUI dialogueTextObj;
     private int currentIndex = 0;
-    private string[] texts = { "Hola, me llamo Juan.", "¿Como estas?\n\nA:Bien\tB:Mal", "¿Puedes ayudarme encontrar mi perro?" };
+    
+    private string[] texts = { "Hola, me llamo Juan.", "<color=white>¿Como estas?</color>\n\nA:Bien\tB:Mal", "¿Puedes ayudarme encontrar mi perro?" };
     private string completedText = "¡Gracias!";
 
     public void UpdateDialogue()

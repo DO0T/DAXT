@@ -15,11 +15,11 @@ public class triggerNewEntry : MonoBehaviour
 
     void Update()
     {
-        if (triggered.LastHitObject == thisObject)
-        {
+        trigger = false;
+        if (triggered.hitObject == thisObject) {
             trigger = true;
-            Debug.Log("Triggered by object: " + thisObject.name);
+            Debug.Log("Triggered by object");
+            Debug.Log(thisObject);
         }
-        // You can add an else block or other conditions as needed.
     }
 }
