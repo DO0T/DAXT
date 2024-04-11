@@ -5,52 +5,117 @@ using TMPro;
 
 public class showText : MonoBehaviour
 {
-    public TextMeshProUGUI textBox;
-
-    public List<string> entries = new List<string>
-    {
-        "el supermercado: supermarket; a noun.\n",
-        "la pastelería: bakery; a noun\n"
-    };
+    public TextMeshProUGUI page1;
+    public TextMeshProUGUI page2;
 
     //reference all game objects being checked for unique text
     //should correspond to list above
-    public triggerNewEntry supermarket;
-    public triggerNewEntry bakery;
+    public triggerNewEntry supermarketScript;
+    public triggerNewEntry bakeryScript;
+    public textTrigger tutorial1Script;
+    public textTrigger tutorial2;
+    public textTrigger tutorial3;
+    public textTrigger tutorial4;
     
+    public class Vocabulary
+    {
+        private int entryNum;
+        private string entryText;
+        private bool entered;
+
+        public Vocabulary(string text)
+        {
+            entryText = text;
+            entered = false;
+        }
+
+        public void enterThis()
+        {
+            entered = true;
+        } 
+
+        public bool hasBeenEntered()
+        {
+            return entered;
+        }
+
+        public string returnText()
+        {
+            return entryText;
+        }
+    }
+
+    //track current values
+    private int currentEntries = 0;
+    private TextMeshProUGUI currentPage;
+    private Vocabulary currentObj;
+
+    //holds vocab entry strings
+    private Vocabulary supermarket;
+    private Vocabulary bakery;
+    private Vocabulary tutorial1;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < entries.Count; i++)
-        {
-            Debug.Log($"Element {i}: {entries[i]}");
-        }
-    
+        currentPage = page1;
+        //holds an instance of Vocabulary that can be ovewritten
+        currentObj = new Vocabulary("");
+        
+        //initialize the vocabulary entries
+        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n");
+        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n");
+        tutorial1 = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //figures out which entry to write
-        if (supermarket.trigger == true)
+        if (supermarketScript.trigger)
         {
-            addMoreText(entries[0]);
+            currentObj = supermarket;
         }
-        else if (bakery.trigger == true)
+        else if (bakeryScript.trigger)
         {
-            addMoreText(entries[1]);
+            currentObj = bakery;
+        }
+        else if (tutorial1Script.trigger)
+        {
+            currentObj = tutorial1;
         }
 
+        //add the current triggered object if it hasn't been triggered before
+        if (currentObj.hasBeenEntered())
+        {
+            //update so it can't be added again
+            currentObj.enterThis();
+            //add the string to the journal
+            addEntry(currentObj.returnText());
+        }
     }
 
-    //adds the new entry to the journal text
-    public void addMoreText(string newEntry)
+    //adds the new entry to the journal
+    public void addEntry(string newEntry)
     {
-        string currentText = textBox.text;
+        //changes journal pages to write to when they run out of room
+        if(currentEntries >= 5)
+        {
+            currentPage = page2;
+        }
+        else
+        {
+            Debug.Log("Ran out of page space in the journal.");
+        }
+
+        //adds text to the right journal page
+        string currentText = currentPage.text;
         string newText = currentText + newEntry;
-        textBox.text = newText;
+        currentPage.text = newText;
+
+        //update the current # of entries
+        currentEntries++;
     }
 }

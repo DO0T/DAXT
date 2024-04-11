@@ -22,13 +22,5 @@ public class triggerNewEntry : MonoBehaviour
             Debug.Log("Triggered by object");
             Debug.Log(thisObject);
         }
-        /*
-        else if ()
-        {
-            trigger = true;
-            Debug.Log("Triggered by dialog");
-            Debug.Log(thisObject);
-        }
-        */
     }
 }
