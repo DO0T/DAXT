@@ -13,9 +13,9 @@ public class showText : MonoBehaviour
     public triggerNewEntry supermarketScript;
     public triggerNewEntry bakeryScript;
     public textTrigger tutorial1Script;
-    public textTrigger tutorial2;
-    public textTrigger tutorial3;
-    public textTrigger tutorial4;
+    //public textTrigger tutorial2;
+    //public textTrigger tutorial3;
+    //public textTrigger tutorial4;
     
     public class Vocabulary
     {
@@ -82,11 +82,12 @@ public class showText : MonoBehaviour
         {
             currentObj = bakery;
         }
+        
         else if (tutorial1Script.trigger)
         {
             currentObj = tutorial1;
         }
-
+        
         //add the current triggered object if it hasn't been triggered before
         if (currentObj.hasBeenEntered())
         {
