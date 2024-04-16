@@ -13,9 +13,10 @@ public class showText : MonoBehaviour
     public triggerNewEntry supermarketScript;
     public triggerNewEntry bakeryScript;
     public textTrigger tutorial1Script;
-    //public textTrigger tutorial2;
-    //public textTrigger tutorial3;
-    //public textTrigger tutorial4;
+    public textTrigger tutorial2Script;
+    public textTrigger tutorial3Script;
+    public textTrigger tutorial4Script;
+    public textTrigger tutorial5Script;
     
     public class Vocabulary
     {
@@ -48,12 +49,19 @@ public class showText : MonoBehaviour
     //track current values
     private int currentEntries = 0;
     private TextMeshProUGUI currentPage;
-    private Vocabulary currentObj;
 
     //holds vocab entry strings
     private Vocabulary supermarket;
     private Vocabulary bakery;
-    private Vocabulary tutorial1;
+    private Vocabulary learn;
+    private Vocabulary speak;
+    private Vocabulary have;
+    private Vocabulary walk;
+    private Vocabulary find;
+    private Vocabulary relax;
+    private Vocabulary want;
+    private Vocabulary look;
+    private Vocabulary go;
 
     
     // Start is called before the first frame update
@@ -61,38 +69,68 @@ public class showText : MonoBehaviour
     {
         currentPage = page1;
         //holds an instance of Vocabulary that can be ovewritten
-        currentObj = new Vocabulary("");
         
         //initialize the vocabulary entries
         supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n");
         bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n");
-        tutorial1 = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n");
-
+        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n");
+        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n");
+        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n");
+        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n");
+        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n");
+        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n");
+        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n");
+        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n");
+        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n");
     }
 
     // Update is called once per frame
     void Update()
     {
         //figures out which entry to write
-        if (supermarketScript.trigger)
+        if(supermarketScript.trigger)
         {
-            currentObj = supermarket;
+            checkValid(supermarket);
         }
-        else if (bakeryScript.trigger)
+        else if(bakeryScript.trigger)
         {
-            currentObj = bakery;
-        }
-        
-        else if (tutorial1Script.trigger)
-        {
-            currentObj = tutorial1;
+            checkValid(bakery);
         }
         
-        //add the current triggered object if it hasn't been triggered before
-        if (currentObj.hasBeenEntered())
+        else if(tutorial1Script.trigger)
+        {
+            checkValid(learn);
+        }
+        else if(tutorial2Script.trigger)
+        {
+            checkValid(speak);
+            checkValid(have);
+        }
+        else if(tutorial3Script.trigger)
+        {
+            checkValid(walk);
+        }
+        else if(tutorial4Script.trigger)
+        {
+            checkValid(find);
+        }
+        else if(tutorial5Script.trigger)
+        {
+            checkValid(relax);
+            checkValid(want);
+            checkValid(look);
+            checkValid(go);
+        }
+    }
+
+    public void checkValid(Vocabulary currentObj)
+    {
+        //if the current object has NOT been entered
+        if(!currentObj.hasBeenEntered())
         {
             //update so it can't be added again
             currentObj.enterThis();
+
             //add the string to the journal
             addEntry(currentObj.returnText());
         }
