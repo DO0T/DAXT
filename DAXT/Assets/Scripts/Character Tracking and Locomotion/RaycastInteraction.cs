@@ -8,7 +8,7 @@ public class RaycastInteraction : MonoBehaviour
 {
     public float raycastDistance = 10.0f;
     public GameObject playerPrefab;
-    private GameObject _lastHitObject; // Store the last hit object
+    public GameObject _lastHitObject; // Store the last hit object
     private TextMeshProUGUI uiText;
 
     public GameObject LastHitObject // Public property to access the last hit object
@@ -23,6 +23,7 @@ public class RaycastInteraction : MonoBehaviour
         {
             Debug.LogError("No TextMeshProUGUI component found on the child of " + gameObject.name);
         }
+        
     }
 
     void Update()
