@@ -15,7 +15,6 @@ public class triggerNewEntry : MonoBehaviour
 
     void Update()
     {
-        trigger = false;
         if (triggered.LastHitObject == thisObject) {
             trigger = true;
             Debug.Log("Triggered by object");

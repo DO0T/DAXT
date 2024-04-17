@@ -13,8 +13,11 @@ public class testJournalEntries : MonoBehaviour
         StartCoroutine(DelayedAction3(6.0f));
         StartCoroutine(DelayedAction4(8.0f));
         StartCoroutine(DelayedAction5(10.0f));
-        StartCoroutine(DelayedAction6(12.0f));
-        StartCoroutine(DelayedAction7(14.0f));
+        StartCoroutine(DelayedAction6(10.0f));
+        StartCoroutine(DelayedAction7(10.0f));
+        StartCoroutine(DelayedAction8(10.0f));
+        StartCoroutine(DelayedAction9(10.0f));
+        StartCoroutine(DelayedAction10(10.0f));
     }
 
     private IEnumerator DelayedAction(float delay)
@@ -34,7 +37,33 @@ public class testJournalEntries : MonoBehaviour
         Debug.Log("Second action performed after " + delay + " seconds.");
         myTest.bakeryScript.trigger = true;
     }
+    
     private IEnumerator DelayedAction3(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified delay
+        // Perform the second action after the delay
+        Debug.Log("Next action performed after " + delay + " seconds.");
+        myTest.taxiScript.trigger = true;
+    }
+    
+    private IEnumerator DelayedAction4(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified delay
+
+        // Perform the second action after the delay
+        Debug.Log("Next action performed after " + delay + " seconds.");
+        myTest.bankScript.trigger = true;
+    }
+    private IEnumerator DelayedAction5(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified delay
+
+        // Perform the second action after the delay
+        Debug.Log("Next action performed after " + delay + " seconds.");
+        myTest.skyScript.trigger = true;
+    }
+    
+    private IEnumerator DelayedAction6(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
@@ -42,7 +71,7 @@ public class testJournalEntries : MonoBehaviour
         myTest.tutorial1Script.trigger = true;
         Debug.Log("Next action performed after " + delay + " seconds.");
     }
-    private IEnumerator DelayedAction4(float delay)
+    private IEnumerator DelayedAction7(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
@@ -50,7 +79,7 @@ public class testJournalEntries : MonoBehaviour
         myTest.tutorial2Script.trigger = true;
         Debug.Log("Next action performed after " + delay + " seconds.");
     }
-    private IEnumerator DelayedAction5(float delay)
+    private IEnumerator DelayedAction8(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
@@ -58,7 +87,7 @@ public class testJournalEntries : MonoBehaviour
         myTest.tutorial3Script.trigger = true;
         Debug.Log("Next action performed after " + delay + " seconds.");
     }
-    private IEnumerator DelayedAction6(float delay)
+    private IEnumerator DelayedAction9(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
@@ -66,7 +95,7 @@ public class testJournalEntries : MonoBehaviour
         myTest.tutorial4Script.trigger = true;
         Debug.Log("Next action performed after " + delay + " seconds.");
     }
-    private IEnumerator DelayedAction7(float delay)
+    private IEnumerator DelayedAction10(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
