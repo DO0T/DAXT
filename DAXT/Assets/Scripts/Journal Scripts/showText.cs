@@ -18,9 +18,9 @@ public class showText : MonoBehaviour
     public textTrigger tutorial4Script;
     public textTrigger tutorial5Script;
     
+    //object to control individual journal entry info
     public class Vocabulary
     {
-        private int entryNum;
         private string entryText;
         private bool entered;
 
@@ -48,6 +48,7 @@ public class showText : MonoBehaviour
 
     //track current values
     private int currentEntries = 0;
+    private static int pageLimit = 6;
     private TextMeshProUGUI currentPage;
 
     //holds vocab entry strings
@@ -71,50 +72,52 @@ public class showText : MonoBehaviour
         //holds an instance of Vocabulary that can be ovewritten
         
         //initialize the vocabulary entries
-        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n");
-        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n");
-        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n");
-        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n");
-        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n");
-        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n");
-        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n");
-        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n");
-        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n");
-        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n");
-        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n");
+        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n\n");
+        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n\n");
+        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n\n");
+        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n\n");
+        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n\n");
+        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n\n");
+        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n\n");
+        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n\n");
+        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n\n");
+        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n\n");
+        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n\n");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //figures out which entry to write
         if(supermarketScript.trigger)
         {
             checkValid(supermarket);
         }
-        else if(bakeryScript.trigger)
+        if(bakeryScript.trigger)
         {
             checkValid(bakery);
         }
-        
-        else if(tutorial1Script.trigger)
+        if(tutorial1Script.trigger)
         {
             checkValid(learn);
+            tutorial1Script.trigger = false;
         }
-        else if(tutorial2Script.trigger)
+        if(tutorial2Script.trigger)
         {
             checkValid(speak);
             checkValid(have);
+            tutorial2Script.trigger = false;
         }
-        else if(tutorial3Script.trigger)
+        if(tutorial3Script.trigger)
         {
             checkValid(walk);
         }
-        else if(tutorial4Script.trigger)
+        if(tutorial4Script.trigger)
         {
             checkValid(find);
         }
-        else if(tutorial5Script.trigger)
+        if(tutorial5Script.trigger)
         {
             checkValid(relax);
             checkValid(want);
@@ -140,8 +143,13 @@ public class showText : MonoBehaviour
     public void addEntry(string newEntry)
     {
         //changes journal pages to write to when they run out of room
-        if(currentEntries >= 5)
+        if(currentEntries < pageLimit)
         {
+            Debug.Log("Added to page 1");
+        }
+        else if (currentEntries >= pageLimit)
+        {
+            Debug.Log("Added to page 1");
             currentPage = page2;
         }
         else
