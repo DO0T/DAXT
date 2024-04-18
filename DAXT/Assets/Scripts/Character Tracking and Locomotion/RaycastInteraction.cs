@@ -8,7 +8,7 @@ public class RaycastInteraction : MonoBehaviour
 {
     public float raycastDistance = 10.0f;
     public GameObject playerPrefab;
-    public GameObject _lastHitObject; // Store the last hit object
+    private GameObject _lastHitObject; // Store the last hit object
     private TextMeshProUGUI uiText;
 
     public GameObject LastHitObject // Public property to access the last hit object
@@ -29,7 +29,7 @@ public class RaycastInteraction : MonoBehaviour
     void Update()
     {
         if (playerPrefab == null || !playerPrefab.activeInHierarchy) return;
-
+        
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hitInfo;
 

@@ -20,11 +20,6 @@ public class textTrigger : MonoBehaviour
             trigger = true;
             Debug.Log("Triggered by dialog");
         }
-        else
-        {
-            trigger = false;
-        }
-        
     }
 
 }

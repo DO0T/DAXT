@@ -7,20 +7,23 @@ public class showText : MonoBehaviour
 {
     public TextMeshProUGUI page1;
     public TextMeshProUGUI page2;
+    public TextMeshProUGUI page3;
 
-    //reference all game objects being checked for unique text
-    //should correspond to list above
+    //reference all game objects to be added
     public triggerNewEntry supermarketScript;
     public triggerNewEntry bakeryScript;
+    public triggerNewEntry taxiScript;
+    public triggerNewEntry bankScript;
+    public triggerNewEntry skyScript;
     public textTrigger tutorial1Script;
     public textTrigger tutorial2Script;
     public textTrigger tutorial3Script;
     public textTrigger tutorial4Script;
     public textTrigger tutorial5Script;
     
+    //object to control individual journal entry info
     public class Vocabulary
     {
-        private int entryNum;
         private string entryText;
         private bool entered;
 
@@ -46,13 +49,23 @@ public class showText : MonoBehaviour
         }
     }
 
-    //track current values
+    //journal values
+    //track number of entries added
     private int currentEntries = 0;
+    //set max entries for a given page
+    private static int pageLimit = 6;
+    //track journal page
     private TextMeshProUGUI currentPage;
 
     //holds vocab entry strings
+    //item vocab strings
     private Vocabulary supermarket;
     private Vocabulary bakery;
+    private Vocabulary taxi;
+    private Vocabulary bank;
+    private Vocabulary sky;
+
+    //dialog vocab
     private Vocabulary learn;
     private Vocabulary speak;
     private Vocabulary have;
@@ -71,55 +84,86 @@ public class showText : MonoBehaviour
         //holds an instance of Vocabulary that can be ovewritten
         
         //initialize the vocabulary entries
-        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n");
-        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n");
-        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n");
-        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n");
-        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n");
-        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n");
-        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n");
-        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n");
-        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n");
-        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n");
-        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n");
+        //item vocab
+        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n\n");
+        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n\n");
+        taxi = new Vocabulary("el taxí: taxi; a masculine noun\n\n");
+        bank = new Vocabulary("el banco: bank; a masculine noun\n\n");
+        sky = new Vocabulary("el cielo: sky; a masculine noun\n\n");
+        //dialog vocab
+        //tutorial 1
+        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n\n");
+        //tutorial 2
+        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n\n");
+        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n\n");
+        //tutorial 3
+        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n\n");
+        //tutorial 4
+        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n\n");
+        //tutorial 5
+        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n\n");
+        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n\n");
+        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n\n");
+        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n\n");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //figures out which entry to write
         if(supermarketScript.trigger)
         {
             checkValid(supermarket);
         }
-        else if(bakeryScript.trigger)
+        if(bakeryScript.trigger)
         {
             checkValid(bakery);
         }
         
-        else if(tutorial1Script.trigger)
+        if(taxiScript.trigger)
+        {
+            checkValid(taxi);
+            taxiScript.trigger = false;
+        }
+        if(bankScript.trigger)
+        {
+            checkValid(bank);
+            bankScript.trigger = false;
+        }
+        if(skyScript.trigger)
+        {
+            checkValid(sky);
+            skyScript.trigger = false;
+        }
+        if(tutorial1Script.trigger)
         {
             checkValid(learn);
+            tutorial1Script.trigger = false;
         }
-        else if(tutorial2Script.trigger)
+        if(tutorial2Script.trigger)
         {
             checkValid(speak);
             checkValid(have);
+            tutorial2Script.trigger = false;
         }
-        else if(tutorial3Script.trigger)
+        if(tutorial3Script.trigger)
         {
             checkValid(walk);
+            tutorial3Script.trigger = false;
         }
-        else if(tutorial4Script.trigger)
+        if(tutorial4Script.trigger)
         {
             checkValid(find);
+            tutorial4Script.trigger = false;
         }
-        else if(tutorial5Script.trigger)
+        if(tutorial5Script.trigger)
         {
             checkValid(relax);
             checkValid(want);
             checkValid(look);
             checkValid(go);
+            tutorial5Script.trigger = false;
         }
     }
 
@@ -140,9 +184,19 @@ public class showText : MonoBehaviour
     public void addEntry(string newEntry)
     {
         //changes journal pages to write to when they run out of room
-        if(currentEntries >= 5)
+        if(currentEntries < pageLimit)
         {
+            Debug.Log("Added to page 1");
+        }
+        else if ((currentEntries >= pageLimit)&&(currentEntries < pageLimit+pageLimit))
+        {
+            Debug.Log("Added to page 2");
             currentPage = page2;
+        }
+        else if (currentEntries >= pageLimit+pageLimit)
+        {
+            Debug.Log("Added to page 3");
+            currentPage = page3;
         }
         else
         {
