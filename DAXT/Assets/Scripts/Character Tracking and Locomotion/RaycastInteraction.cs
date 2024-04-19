@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,6 +11,7 @@ public class RaycastInteraction : MonoBehaviour
     public GameObject playerPrefab;
     private GameObject _lastHitObject; // Store the last hit object
     private TextMeshProUGUI uiText;
+    private Dictionary<GameObject, DateTime> lastAudioPlayTime = new Dictionary<GameObject, DateTime>(); // Dictionary to track audio play timestamps
 
     public GameObject LastHitObject // Public property to access the last hit object
     {
@@ -49,15 +51,25 @@ public class RaycastInteraction : MonoBehaviour
     void PlayAudio(GameObject obj)
     {
         AudioSource audioSource = obj.GetComponent<AudioSource>();
-        if (audioSource != null)
+        if (audioSource != null && CanPlayAudio(obj))
         {
             audioSource.Play();
             Debug.Log("Playing audio on: " + obj.name);
+            lastAudioPlayTime[obj] = DateTime.Now; // Update the last played time
         }
         else
         {
             Debug.LogWarning("Object does not have an Audiosource Component attached!");
         }
+    }
+
+    bool CanPlayAudio(GameObject obj)
+    {
+        if (lastAudioPlayTime.TryGetValue(obj, out DateTime lastPlayed))
+        {
+            return (DateTime.Now - lastPlayed).TotalSeconds > 60; // Check if more than 60 seconds have passed
+        }
+        return true; // If no record, play audio
     }
 
     void DisplayText(GameObject obj)
