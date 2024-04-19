@@ -23,13 +23,12 @@ public class RaycastInteraction : MonoBehaviour
         {
             Debug.LogError("No TextMeshProUGUI component found on the child of " + gameObject.name);
         }
-        
     }
 
     void Update()
     {
         if (playerPrefab == null || !playerPrefab.activeInHierarchy) return;
-        
+
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hitInfo;
 
@@ -69,5 +68,3 @@ public class RaycastInteraction : MonoBehaviour
         }
     }
 }
-
-
