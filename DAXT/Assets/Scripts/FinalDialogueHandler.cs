@@ -17,6 +17,8 @@ public class FinalDialogueHandler : MonoBehaviour
 
     // Game Objects
     public GameObject dialogueBox;
+    public GameObject Player;
+    public GameObject EndScreen;
 
     // State bools
     bool player_detection = false;
@@ -56,19 +58,48 @@ public class FinalDialogueHandler : MonoBehaviour
     void Update()
     {
         if (player_detection) {
-            if (!question1) {
+            if (!question1 && !question2 && !question3 && !question4 && !fitb1 && !fitb2 && !fitb3 && !fitb4) {
                 if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
                 {
                     // Check if the button was not pressed last frame and is pressed now
                     if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
                     {
-                        // Check if on final dialogue
+                        // Check if on Question 1
                         if (dialogueTextScript.getIndex() == 1) {
                             dialogueTextScript.UpdateDialogue();
                             question1 = true;
                         }
                         else if (dialogueTextScript.getIndex() == 2) {
                             dialogueTextScript.UpdateDialogue();
+                            question2 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 3) {
+                            dialogueTextScript.UpdateDialogue();
+                            question3 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 4) {
+                            dialogueTextScript.UpdateDialogue();
+                            question4 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 5) {
+                            dialogueTextScript.UpdateDialogue();
+                            fitb1 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 6) {
+                            dialogueTextScript.UpdateDialogue();
+                            fitb2 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 7) {
+                            dialogueTextScript.UpdateDialogue();
+                            fitb3 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 8) {
+                            dialogueTextScript.UpdateDialogue();
+                            fitb4 = true;
+                        }
+                        else if (dialogueTextScript.getIndex() == 9) {
+                            Player.SetActive(false);
+                            EndScreen.SetActive(true);
                         }
                         else {
                             dialogueTextScript.UpdateDialogue();
@@ -85,7 +116,7 @@ public class FinalDialogueHandler : MonoBehaviour
                     // Check if the button was not pressed last frame and is pressed now
                     if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
                     {
-                        dialogueTextScript.GoodDialogue();
+                        dialogueTextScript.FirstDialogue1();
                         dialogueTextScript.NextText();
                         question1 = false;
                     }
@@ -97,9 +128,183 @@ public class FinalDialogueHandler : MonoBehaviour
                     // Check if the button was not pressed last frame and is pressed now
                     if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
                     {
-                        dialogueTextScript.BadDialogue();
+                        dialogueTextScript.SecondDialogue1();
                         dialogueTextScript.NextText();
                         question1 = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (question2) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FirstDialogue2();
+                        dialogueTextScript.NextText();
+                        question2 = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.SecondDialogue2();
+                        dialogueTextScript.NextText();
+                        question2 = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (question3) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FirstDialogue3();
+                        dialogueTextScript.NextText();
+                        question3 = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.SecondDialogue3();
+                        dialogueTextScript.NextText();
+                        question3 = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (question4) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FirstDialogue4();
+                        dialogueTextScript.NextText();
+                        question4 = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.SecondDialogue4();
+                        dialogueTextScript.NextText();
+                        question4 = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (fitb1) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FitFirstChoice1();
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.FitSecondChoice1();
+                        dialogueTextScript.NextText();
+                        fitb1 = false;
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (fitb2) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FitFirstChoice2();
+                        dialogueTextScript.NextText();
+                        fitb2 = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.FitSecondChoice2();
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (fitb3) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FitFirstChoice3();
+                        dialogueTextScript.NextText();
+                        fitb3 = false;
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.FitSecondChoice3();
+                    }
+
+                    wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
+                }
+            }
+            else if (fitb4) {
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool primaryButtonPressed))
+                {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasPrimaryButtonPressedLastFrame && primaryButtonPressed)
+                    {
+                        dialogueTextScript.FitFirstChoice4();
+                    }
+
+                    wasPrimaryButtonPressedLastFrame = primaryButtonPressed;
+                }
+
+                if (rightHandController.isValid && rightHandController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out bool secondaryButtonPressed)) {
+                    // Check if the button was not pressed last frame and is pressed now
+                    if (!wasSecondaryButtonPressedLastFrame && secondaryButtonPressed)
+                    {
+                        dialogueTextScript.FitSecondChoice4();
+                        dialogueTextScript.NextText();
+                        fitb4 = false;
                     }
 
                     wasSecondaryButtonPressedLastFrame = secondaryButtonPressed;
