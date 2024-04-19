@@ -35,4 +35,11 @@ public class LookCounter : MonoBehaviour
             objectToEnable.SetActive(true);
         }
     }
+
+    public void ResetCounter()
+    {
+        currentCounter = 0;
+        counterText.text = currentCounter.ToString();
+        objectToEnable.SetActive(false); // Optionally disable the object when resetting
+    }
 }
