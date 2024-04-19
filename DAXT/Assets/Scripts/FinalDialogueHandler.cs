@@ -34,7 +34,7 @@ public class FinalDialogueHandler : MonoBehaviour
     private bool wasPrimaryButtonPressedLastFrame = false;
 
     void Start() {
-        //dialogueBox.SetActive(false);
+        dialogueBox.SetActive(false);
     }
 
     void InitializeRightController() {
