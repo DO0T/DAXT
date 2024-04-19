@@ -21,7 +21,7 @@ public class RaycastInteraction : MonoBehaviour
         uiText = GetComponentInChildren<TextMeshProUGUI>();
         if (uiText == null)
         {
-            Debug.LogError("No TextMeshProUGUI component found on the child of " + gameObject.name);
+           // Debug.LogError("No TextMeshProUGUI component found on the child of " + gameObject.name);
         }
     }
 
@@ -68,3 +68,5 @@ public class RaycastInteraction : MonoBehaviour
         }
     }
 }
+
+
