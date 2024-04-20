@@ -39,7 +39,7 @@ public class RaycastInteraction : MonoBehaviour
             if (hitInfo.collider.CompareTag("Interactable"))
             {
                 _lastHitObject = hitInfo.collider.gameObject; // Update the last hit object
-                PlayAudio(_lastHitObject);
+                //PlayAudio(_lastHitObject);
                 if (_lastHitObject == gameObject)
                 {
                     DisplayText(_lastHitObject);
@@ -48,29 +48,29 @@ public class RaycastInteraction : MonoBehaviour
         }
     }
 
-    void PlayAudio(GameObject obj)
-    {
-        AudioSource audioSource = obj.GetComponent<AudioSource>();
-        if (audioSource != null && CanPlayAudio(obj))
-        {
-            audioSource.Play();
-            Debug.Log("Playing audio on: " + obj.name);
-            lastAudioPlayTime[obj] = DateTime.Now; // Update the last played time
-        }
-        else
-        {
-            Debug.LogWarning("Object does not have an Audiosource Component attached!");
-        }
-    }
+    // void PlayAudio(GameObject obj)
+    // {
+    //     AudioSource audioSource = obj.GetComponent<AudioSource>();
+    //     if (audioSource != null && CanPlayAudio(obj))
+    //     {
+    //         audioSource.PlayOneShot();
+    //         Debug.Log("Playing audio on: " + obj.name);
+    //         lastAudioPlayTime[obj] = DateTime.Now; // Update the last played time
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("Object does not have an Audiosource Component attached!");
+    //     }
+    // }
 
-    bool CanPlayAudio(GameObject obj)
-    {
-        if (lastAudioPlayTime.TryGetValue(obj, out DateTime lastPlayed))
-        {
-            return (DateTime.Now - lastPlayed).TotalSeconds > 60; // Check if more than 60 seconds have passed
-        }
-        return true; // If no record, play audio
-    }
+    // bool CanPlayAudio(GameObject obj)
+    // {
+    //     if (lastAudioPlayTime.TryGetValue(obj, out DateTime lastPlayed))
+    //     {
+    //         return (DateTime.Now - lastPlayed).TotalSeconds > 10; // Check if more than 60 seconds have passed
+    //     }
+    //     return true; // If no record, play audio
+    // }
 
     void DisplayText(GameObject obj)
     {

@@ -11,6 +11,30 @@ public class showText : MonoBehaviour
     public TextMeshProUGUI page4;
     public TextMeshProUGUI page5;
 
+    // Gameobject Audio Source Component
+    public GameObject supermarketAudio;
+    public GameObject skyAudio;
+    public GameObject bakeryAudio;
+    public GameObject busAudio;
+    public GameObject taxiAudio;
+    public GameObject bankAudio;
+    public GameObject carAudio;
+    public GameObject museumAudio;
+    public GameObject streetAudio;
+    public GameObject restaurantAudio;
+    public GameObject skyscraperAudio;
+    public GameObject departmentStoreAudio;
+    public GameObject benchAudio;
+    public GameObject sidewalkAudio;
+    public GameObject firehydrantAudio;
+    public GameObject trashcanAudio;
+    public GameObject treeAudio;
+    public GameObject stoplightAudio;
+    public GameObject streetlightAudio;
+    public GameObject busstopAudio;
+    public GameObject emptyAudio;
+
+
     //reference all game objects to be added
     public triggerNewEntry busScript;
     public triggerNewEntry supermarketScript;
@@ -33,7 +57,6 @@ public class showText : MonoBehaviour
     public triggerNewEntry streetlightScript;
     public triggerNewEntry busStopScript;
 
-
     public textTrigger tutorial1Script;
     public textTrigger tutorial2Script;
     public textTrigger tutorial3Script;
@@ -46,10 +69,13 @@ public class showText : MonoBehaviour
         private string entryText;
         private bool entered;
 
-        public Vocabulary(string text)
+        public GameObject audioSource;
+
+        public Vocabulary(string text, GameObject audioSource)
         {
             entryText = text;
             entered = false;
+            this.audioSource = audioSource;
         }
 
         public void enterThis()
@@ -119,43 +145,43 @@ public class showText : MonoBehaviour
         
         //initialize the vocabulary entries
         //item vocab
-        bus = new Vocabulary("el autobús: bus;\n\n");
-        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n\n");
-        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n\n");
-        taxi = new Vocabulary("el taxí: taxi; a masculine noun\n\n");
-        bank = new Vocabulary("el banco: bank (also bench); a masculine noun\n\n");
-        sky = new Vocabulary("el cielo: sky; a masculine noun\n\n");
-        departmentStore = new Vocabulary("los grandes almacenes: department store; a masculine noun\n\n");
-        car = new Vocabulary("el carro: car; a masculine noun\n\n");
-        museum = new Vocabulary("el museo: museum; a masculine noun\n\n");
-        street = new Vocabulary("la calle: street; a feminine noun\n\n");
-        restaurant = new Vocabulary("el resaurante: restaurant; a masculine noun\n\n");
-        skyscraper = new Vocabulary("el rascacielo: skyscraper; a masculine noun\n\n");
-        bench = new Vocabulary("el banco: bench (also bank); a masculine noun\n\n");
-        sidewalk = new Vocabulary("la acera: sidewalk; a feminine noun\n\n");
-        fireHydrant = new Vocabulary("el buzón: fire hydrant; a masculine noun\n\n");
-        trashcan = new Vocabulary("el bote de basura: trash can; a masculine noun\n\n");
-        tree = new Vocabulary("el árbol: tree; a masculine noun\n\n");
-        stoplight = new Vocabulary("el semáforo: stoplight; a masculine noun\n\n");
-        streetlight = new Vocabulary("la farola: streetlight; a feminine noun\n\n");
-        busStop = new Vocabulary("la parada de autobús: bus stop; a feminine noun\n\n");
+        bus = new Vocabulary("el autobús: bus;\n\n", busAudio);
+        supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n\n", supermarketAudio);
+        bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n\n", bakeryAudio);
+        taxi = new Vocabulary("el taxí: taxi; a masculine noun\n\n", taxiAudio);
+        bank = new Vocabulary("el banco: bank (also bench); a masculine noun\n\n", bankAudio);
+        sky = new Vocabulary("el cielo: sky; a masculine noun\n\n", skyAudio);
+        departmentStore = new Vocabulary("los grandes almacenes: department store; a masculine noun\n\n", departmentStoreAudio);
+        car = new Vocabulary("el carro: car; a masculine noun\n\n", carAudio);
+        museum = new Vocabulary("el museo: museum; a masculine noun\n\n", museumAudio);
+        street = new Vocabulary("la calle: street; a feminine noun\n\n", streetAudio);
+        restaurant = new Vocabulary("el resaurante: restaurant; a masculine noun\n\n", restaurantAudio);
+        skyscraper = new Vocabulary("el rascacielo: skyscraper; a masculine noun\n\n", skyscraperAudio);
+        bench = new Vocabulary("el banco: bench (also bank); a masculine noun\n\n", benchAudio);
+        sidewalk = new Vocabulary("la acera: sidewalk; a feminine noun\n\n", sidewalkAudio);
+        fireHydrant = new Vocabulary("el buzón: fire hydrant; a masculine noun\n\n", firehydrantAudio);
+        trashcan = new Vocabulary("el bote de basura: trash can; a masculine noun\n\n", trashcanAudio);
+        tree = new Vocabulary("el árbol: tree; a masculine noun\n\n", treeAudio);
+        stoplight = new Vocabulary("el semáforo: stoplight; a masculine noun\n\n", stoplightAudio);
+        streetlight = new Vocabulary("la farola: streetlight; a feminine noun\n\n", streetlightAudio);
+        busStop = new Vocabulary("la parada de autobús: bus stop; a feminine noun\n\n", busstopAudio);
             
         
         //dialog vocab
         //tutorial 1
-        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n\n");
+        learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n\n", emptyAudio);
         //tutorial 2
-        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n\n");
-        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n\n");
+        speak = new Vocabulary("hablar: to speak; -ar verb; you saw it conjugated as hablan\n\n", emptyAudio);
+        have = new Vocabulary("tener: to have; -er verb; you saw it conjugated as tienen\n\n", emptyAudio);
         //tutorial 3
-        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n\n");
+        walk = new Vocabulary("dar un paseo: to take a walk; common phrase; you saw it conjugated as da un paseo\n\n", emptyAudio);
         //tutorial 4
-        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n\n");
+        find = new Vocabulary("encontrar: to find; -ar verb; already in infinitive form\n\n", emptyAudio);
         //tutorial 5
-        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n\n");
-        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n\n");
-        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n\n");
-        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n\n");
+        relax = new Vocabulary("relajarse: to relax; reflexive -ar verb; you saw it conjugated as relajate\n\n", emptyAudio);
+        want = new Vocabulary("querer: to want; irregular -er verb; you saw it conjugated as quieres\n\n", emptyAudio);
+        look = new Vocabulary("mirar: to look; -ar verb; you saw it conjugated as mira\n\n", emptyAudio);
+        go = new Vocabulary("ir: to go; irregular verb; you saw it conjugated as van\n\n", emptyAudio);
     }
 
     // Update is called once per frame
@@ -303,6 +329,7 @@ public class showText : MonoBehaviour
         {
             //update so it can't be added again
             currentObj.enterThis();
+            PlayAudio(currentObj.audioSource.GetComponent<AudioSource>());
 
             //add the string to the journal
             addEntry(currentObj.returnText());
@@ -349,5 +376,17 @@ public class showText : MonoBehaviour
 
         //update the current # of entries
         currentEntries++;
+    }
+    void PlayAudio(AudioSource obj)
+    {
+        if (obj != null)
+        {
+            obj.Play();
+            //Debug.Log("Playing audio on: " + obj.name);
+        }
+        else
+        {
+            Debug.LogWarning("Object does not have an Audiosource Component attached!");
+        }
     }
 }
