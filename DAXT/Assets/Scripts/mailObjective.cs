@@ -13,6 +13,8 @@ public class mailObjective : MonoBehaviour
     private GameObject mailItemTemplate;
     public GameObject tryAgain;
 
+    public journal j;
+
     public objectiveTracker objTrack;
     public dialogueText done;
 
@@ -68,6 +70,13 @@ public class mailObjective : MonoBehaviour
 
     public void completeTask()
     {
+        j.obj2SpanishText.text = " ";
+       j.obj2EnglishText.text = " ";
+
+
+       j.compObj2SpanishText.text = "María no encuentra su carta, pero ya no necesita enviarla. Por favor, tírela a la basura.:\n\nEncuentra y recoge la carta (1/1)\nLleva la carta a la papelera (1/1)";
+       j.compObj2EnglishText.text = "Maria can't find her letter, but she doesn't need to send it anymore. Please throw it away for her.:\n\nFind and pick up the letter (1/1)\nBring the letter to the trash (1/1)";
+
         objTrack.StrikeThroughMailObjective();
         done.DoneDialogue();
         Destroy(mailItem);

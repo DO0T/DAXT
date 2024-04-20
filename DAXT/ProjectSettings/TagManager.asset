@@ -7,6 +7,8 @@ TagManager:
   - Interactable
   - pickUp
   - tempInteractable
+  - dog
+  - letter
   layers:
   - Default
   - TransparentFX
