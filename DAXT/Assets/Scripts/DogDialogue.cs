@@ -19,6 +19,8 @@ public class DogDialogue : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject dog;
 
+    public journal j;
+
     // State bools
     bool player_detection = false;
     bool player_mood = false;
@@ -67,6 +69,9 @@ public class DogDialogue : MonoBehaviour
                             dialogueTextScript.UpdateDialogue();
                             
                             if (dog != null) {
+                                j.obj1SpanishText.text = "¡Oh, no! Luis ha perdido a su perro. ¡Necesita tu ayuda para encontrarlo!:\n\nEncuentra y recoge al perro (0/1)\nLlévale el perro a Luis (0/1)";
+                                j.obj1EnglishText.text = "Oh No! Luis has lost his dog. He needs your help finding it!:\n\nFind and pick up the dog (0/1)\nBring the dog to Luis (0/1)";
+
                             dog.SetActive(true);
 
                             if (!dog_added) {
@@ -114,6 +119,8 @@ public class DogDialogue : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        
+
         if(other.name == "Player") {
             player_detection = true;
             InitializeRightController();

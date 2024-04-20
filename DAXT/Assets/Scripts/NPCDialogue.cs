@@ -23,6 +23,8 @@ public class NPCDialogue : MonoBehaviour
     bool player_detection = false;
     bool mailAdded = false;
 
+    public journal j;
+
     // This is needed for computers pushing 120+ fps
     private bool wasPrimaryButtonPressedLastFrame = false;
 
@@ -63,6 +65,9 @@ public class NPCDialogue : MonoBehaviour
                         // make sure mail exists
                         if (mailItem != null) {
                             mailItem.SetActive(true);
+
+                            j.obj2SpanishText.text = "María no encuentra su carta, pero ya no necesita enviarla. Por favor, tírela a la basura.:\n\nEncuentra y recoge la carta (0/1)\nLleva la carta a la papelera (0/1)";
+                            j.obj2EnglishText.text = "Maria can't find her letter, but she doesn't need to send it anymore. Please throw it away for her.:\n\nFind and pick up the letter (0/1)\nBring the letter to the trash (0/1)";
                         }
 
                         // Add mail to task list

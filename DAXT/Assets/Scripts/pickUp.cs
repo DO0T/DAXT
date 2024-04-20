@@ -21,7 +21,7 @@ public class pickUp : MonoBehaviour
     void Update()
     {   
         // when the player presses "E"...
-        if (Input.GetKeyDown(KeyCode.E));
+        if (Input.GetKeyDown(KeyCode.E))
         {
             // ...if there is no item in hand...
             if (item == null)
