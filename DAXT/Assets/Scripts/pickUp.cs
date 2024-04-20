@@ -38,7 +38,7 @@ public class pickUp : MonoBehaviour
                         j.obj1EnglishText.text = "Oh No! Luis has lost his dog. He needs your help finding it!:\n\nFind and pick up the dog (1/1)\nBring the dog to Luis (0/1)";
                     }
 
-                    else if (hit.collider.CompareTag("letter"))
+                    if (hit.collider.CompareTag("letter"))
                     {
                         // pick up the item
                         PickUpObject(hit.collider.gameObject);
