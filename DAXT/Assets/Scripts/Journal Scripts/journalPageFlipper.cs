@@ -26,7 +26,7 @@ public class journalPageFlipper : MonoBehaviour
             {
                 journalOpen = false;
                 pages[currentPageIndex].SetActive(false);
-                currentPageIndex = 0;
+                //currentPageIndex = 0;
             }
             else
             {
