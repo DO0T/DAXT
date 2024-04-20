@@ -8,13 +8,32 @@ public class showText : MonoBehaviour
     public TextMeshProUGUI page1;
     public TextMeshProUGUI page2;
     public TextMeshProUGUI page3;
+    public TextMeshProUGUI page4;
+    public TextMeshProUGUI page5;
 
     //reference all game objects to be added
+    public triggerNewEntry busScript;
     public triggerNewEntry supermarketScript;
     public triggerNewEntry bakeryScript;
     public triggerNewEntry taxiScript;
     public triggerNewEntry bankScript;
     public triggerNewEntry skyScript;
+    public triggerNewEntry departmentStoreScript;
+    public triggerNewEntry carScript;
+    public triggerNewEntry museumScript;
+    public triggerNewEntry streetScript;
+    public triggerNewEntry restaurantScript;
+    public triggerNewEntry skyscraperScript;
+    public triggerNewEntry benchScript;
+    public triggerNewEntry sidewalkScript;
+    public triggerNewEntry fireHydrantScript;
+    public triggerNewEntry trashcanScript;
+    public triggerNewEntry treeScript;
+    public triggerNewEntry stoplightScript;
+    public triggerNewEntry streetlightScript;
+    public triggerNewEntry busStopScript;
+
+
     public textTrigger tutorial1Script;
     public textTrigger tutorial2Script;
     public textTrigger tutorial3Script;
@@ -59,11 +78,26 @@ public class showText : MonoBehaviour
 
     //holds vocab entry strings
     //item vocab strings
+    private Vocabulary bus;
     private Vocabulary supermarket;
     private Vocabulary bakery;
     private Vocabulary taxi;
     private Vocabulary bank;
     private Vocabulary sky;
+    private Vocabulary departmentStore;
+    private Vocabulary car;
+    private Vocabulary museum;
+    private Vocabulary street;
+    private Vocabulary restaurant;
+    private Vocabulary skyscraper;
+    private Vocabulary bench;
+    private Vocabulary sidewalk;
+    private Vocabulary fireHydrant;
+    private Vocabulary trashcan;
+    private Vocabulary tree;
+    private Vocabulary stoplight;
+    private Vocabulary streetlight;
+    private Vocabulary busStop;
 
     //dialog vocab
     private Vocabulary learn;
@@ -85,11 +119,28 @@ public class showText : MonoBehaviour
         
         //initialize the vocabulary entries
         //item vocab
+        bus = new Vocabulary("el autobús: bus;\n\n");
         supermarket = new Vocabulary("el supermercado: supermarket; a masculine noun\n\n");
         bakery = new Vocabulary("la pastelería: bakery; a feminine noun\n\n");
         taxi = new Vocabulary("el taxí: taxi; a masculine noun\n\n");
-        bank = new Vocabulary("el banco: bank; a masculine noun\n\n");
+        bank = new Vocabulary("el banco: bank (also bench); a masculine noun\n\n");
         sky = new Vocabulary("el cielo: sky; a masculine noun\n\n");
+        departmentStore = new Vocabulary("los grandes almacenes: department store; a masculine noun\n\n");
+        car = new Vocabulary("el carro: car; a masculine noun\n\n");
+        museum = new Vocabulary("el museo: museum; a masculine noun\n\n");
+        street = new Vocabulary("la calle: street; a feminine noun\n\n");
+        restaurant = new Vocabulary("el resaurante: restaurant; a masculine noun\n\n");
+        skyscraper = new Vocabulary("el rascacielo: skyscraper; a masculine noun\n\n");
+        bench = new Vocabulary("el banco: bench (also bank); a masculine noun\n\n");
+        sidewalk = new Vocabulary("la acera: sidewalk; a feminine noun\n\n");
+        fireHydrant = new Vocabulary("el buzón: fire hydrant; a masculine noun\n\n");
+        trashcan = new Vocabulary("el bote de basura: trash can; a masculine noun\n\n");
+        tree = new Vocabulary("el árbol: tree; a masculine noun\n\n");
+        stoplight = new Vocabulary("el semáforo: stoplight; a masculine noun\n\n");
+        streetlight = new Vocabulary("la farola: streetlight; a feminine noun\n\n");
+        busStop = new Vocabulary("la parada de autobús: bus stop; a feminine noun\n\n");
+            
+        
         //dialog vocab
         //tutorial 1
         learn = new Vocabulary("aprender: to learn; an -er verb; already in infinitive form\n\n");
@@ -112,15 +163,22 @@ public class showText : MonoBehaviour
     {
         
         //figures out which entry to write
+        //object vocab triggers
+        if(busScript.trigger)
+        {
+            checkValid(bus);
+            busScript.trigger = false;
+        }
         if(supermarketScript.trigger)
         {
             checkValid(supermarket);
+            supermarketScript.trigger = false;
         }
         if(bakeryScript.trigger)
         {
             checkValid(bakery);
+            bakeryScript.trigger = false;
         }
-        
         if(taxiScript.trigger)
         {
             checkValid(taxi);
@@ -136,6 +194,77 @@ public class showText : MonoBehaviour
             checkValid(sky);
             skyScript.trigger = false;
         }
+        if(departmentStoreScript.trigger)
+        {
+            checkValid(departmentStore);
+            departmentStoreScript.trigger = false;
+        }
+        if(carScript.trigger)
+        {
+            checkValid(car);
+            carScript.trigger = false;
+        }
+        if(museumScript.trigger)
+        {
+            checkValid(museum);
+            museumScript.trigger = false;
+        }
+        if(streetScript.trigger)
+        {
+            checkValid(street);
+            streetScript.trigger = false;
+        }
+        if(restaurantScript.trigger)
+        {
+            checkValid(restaurant);
+            restaurantScript.trigger = false;
+        }
+        if(skyscraperScript.trigger)
+        {
+            checkValid(skyscraper);
+            skyscraperScript.trigger = false;
+        }
+        if(benchScript.trigger)
+        {
+            checkValid(bench);
+            benchScript.trigger = false;
+        }
+        if(sidewalkScript.trigger)
+        {
+            checkValid(sidewalk);
+            sidewalkScript.trigger = false;
+        }
+        if(fireHydrantScript.trigger)
+        {
+            checkValid(fireHydrant);
+            fireHydrantScript.trigger = false;
+        }
+        if(trashcanScript.trigger)
+        {
+            checkValid(trashcan);
+            trashcanScript.trigger = false;
+        }
+        if(treeScript.trigger)
+        {
+            checkValid(tree);
+            treeScript.trigger = false;
+        }
+        if(stoplightScript.trigger)
+        {
+            checkValid(stoplight);
+            stoplightScript.trigger = false;
+        }
+        if(streetlightScript.trigger)
+        {
+            checkValid(streetlight);
+            streetlightScript.trigger = false;
+        }
+        if(busStopScript.trigger)
+        {
+            checkValid(busStop);
+            busStopScript.trigger = false;
+        }
+        //tutorial vocab triggers
         if(tutorial1Script.trigger)
         {
             checkValid(learn);
@@ -193,10 +322,20 @@ public class showText : MonoBehaviour
             Debug.Log("Added to page 2");
             currentPage = page2;
         }
-        else if (currentEntries >= pageLimit+pageLimit)
+        else if ((currentEntries >= pageLimit+pageLimit)&&(currentEntries < pageLimit+pageLimit+pageLimit))
         {
             Debug.Log("Added to page 3");
             currentPage = page3;
+        }
+        else if ((currentEntries >= pageLimit+pageLimit+pageLimit)&&(currentEntries < pageLimit+pageLimit+pageLimit+pageLimit))
+        {
+            Debug.Log("Added to page 4");
+            currentPage = page4;
+        }
+        else if ((currentEntries >= pageLimit+pageLimit+pageLimit+pageLimit)&&(currentEntries < pageLimit+pageLimit+pageLimit+pageLimit+pageLimit))
+        {
+            Debug.Log("Added to page 5");
+            currentPage = page5;
         }
         else
         {
