@@ -19,7 +19,7 @@ public class englishToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.JoystickButton3))
         {
             if(englIsOn)
             {

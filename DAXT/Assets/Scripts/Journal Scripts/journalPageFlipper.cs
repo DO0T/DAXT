@@ -20,7 +20,7 @@ public class journalPageFlipper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton1))
+       if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton2))
        {
             if(journalOpen)
             {
@@ -35,11 +35,11 @@ public class journalPageFlipper : MonoBehaviour
             }
 
        }
-       if((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.JoystickButton2)) &&journalOpen)
+       if((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.JoystickButton4)) &&journalOpen)
        {
             flipPageLeft();
        }
-       if((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.JoystickButton3)) &&journalOpen)
+       if((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.JoystickButton5)) &&journalOpen)
        {
             flipPageRight();
        }
