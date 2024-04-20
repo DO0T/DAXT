@@ -21,11 +21,13 @@ public class pickUp : MonoBehaviour
     void Update()
     {   
         // when the player presses "E"...
-        if (Input.GetKeyDown(KeyCode.E));
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
+            Debug.Log("Pressed pick up button!");
             // ...if there is no item in hand...
             if (item == null)
             {
+                Debug.Log("Item is null!");
                 // check if item in area can be picked up
                 if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
                 {
@@ -97,12 +99,16 @@ public class pickUp : MonoBehaviour
 
     void DropObject()
     {
-        item.GetComponent<Rigidbody>().isKinematic = false;
+        if (item != null) 
+        {
+            item.GetComponent<Rigidbody>().isKinematic = false;
 
-        // player is no longer parent of item
-        item.transform.parent = null;
-        item = null;
+            // player is no longer parent of item   
+            item.transform.parent = null;
+            item = null;
+        }
     }
+
 
     void UpdateInstructions()
     {
